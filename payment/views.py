@@ -50,7 +50,7 @@ def process_order(request):
 
         full_name = user_shipping['shipping_full_name']
         email = user_shipping['shipping_email']
-        full_address = f'{user_shipping['shipping_address1']}\n{user_shipping['shipping_address2']}\n{user_shipping['shipping_city']}\n{user_shipping['shipping_state']}\n{user_shipping['shipping_zipcode']}\n{user_shipping['shipping_country']}'
+        full_address = f"{user_shipping['shipping_address1']}\n{user_shipping['shipping_address2']}\n{user_shipping['shipping_city']}\n{user_shipping['shipping_state']}\n{user_shipping['shipping_zipcode']}\n{user_shipping['shipping_country']}"
         
         if request.user.is_authenticated:
             user = request.user
