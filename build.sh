@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -o errexit
 set -x
 
@@ -7,6 +8,11 @@ python manage.py migrate
 
 python -c "
 import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyStore.settings')  # <-- اسم پروژه‌ات رو اینجا بزار
+django.setup()
+
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
