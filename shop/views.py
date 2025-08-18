@@ -25,7 +25,7 @@ def order_details(request, pk):
         return render(request, 'order_details.html', context)
 
     else:
-        messages.success(request, 'دسترسی به این صفحه امکان پذیر نمیباشد')
+        messages.success(request, 'دسترسی به این صفحه امکان‌پذیر نمی‌باشد')
         return redirect('home')
 
 def user_orders(request):
@@ -39,7 +39,7 @@ def user_orders(request):
         }
         return render(request, 'orders.html', context)
     else:
-        messages.success(request, 'دسترسی به این صفحه امکان پذیر نمیباشد')
+        messages.success(request, 'دسترسی به این صفحه امکان‌پذیر نمی‌باشد')
         return redirect('home')
 
 def search(request):
@@ -47,7 +47,7 @@ def search(request):
         searched = request.POST['searched']
         searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
         if not searched:
-            messages.success(request, 'چنین محصولی وجود ندارد')
+            messages.success(request, 'چنین محصولی یافت نشد')
             return render(request, 'search.html', {})
         else:
             return render(request, 'search.html', {'searched':searched})
@@ -68,7 +68,7 @@ def update_info(request):
         return render(request, 'update_info.html', {'form':form, 'shipping_form':shipping_form})
     
     else:
-        messages.success(request, 'ابتدا باید لاگین کنید')
+        messages.success(request, 'ابتدا باید وارد حساب کاربری خود شوید')
         return redirect ('home')
 
 def category_summary(request):
@@ -104,7 +104,7 @@ def login_user(request):
             messages.success(request, ("با موفقیت وارد شدید"))
             return redirect("home")
         else:
-            messages.success(request, ("مشکلی در لاگین وجود داشت"))
+            messages.success(request, ("مشکلی در ورود به حساب کاربری وجود دارد"))
             return redirect("login")
     else:
         return render(request, 'login.html')
@@ -124,10 +124,10 @@ def signup_user(request):
             password1 = form.cleaned_data['password1']
             user = authenticate(request, username=username, password=password1)
             login(request, user)
-            messages.success(request, ("اکانت شما ساخته شد"))
+            messages.success(request, ("حساب کاربری شما ساخته شد"))
             return redirect("update_info")
         else:
-            messages.success(request, ("مشکلی در ثبت نلم شما وجود دارد"))
+            messages.success(request, ("مشکلی در ثبت‌نام شما وجود دارد"))
             return redirect("signup")
     else:
         return render(request, 'signup.html', {'form':form})
@@ -145,7 +145,7 @@ def update_user(request):
         return render(request, 'update_user.html', {'user_form':user_form})
     
     else:
-        messages.success(request, 'ابتدا باید لاگین کنید')
+        messages.success(request, 'ابتدا باید وارد حساب کاربری خود شوید')
         return redirect ('home')
 
 def update_password(request):
@@ -156,7 +156,7 @@ def update_password(request):
 
             if form.is_valid():
                 form.save()
-                messages.success(request, 'رمز با موفقیت ویرایش شد')
+                messages.success(request, 'رمز شما با موفقیت ویرایش شد')
                 login(request, current_user)
                 return redirect('update_user')
             else:
@@ -168,7 +168,7 @@ def update_password(request):
             form = UserPasswordForm(current_user)
             return render(request, 'update_password.html', {'form':form})
     else:
-        messages.success(request, 'باید اول لاگین بشی')
+        messages.success(request, 'ابتدا باید وارد حساب کاربری خود شوید')
         return redirect('home')   
 
 def product(request,pk):
@@ -182,5 +182,5 @@ def category(request,cat):
         products = Product.objects.filter(category=category)
         return render(request, 'category.html', {'products': products, "category": category})
     except:
-        messages.success(request, ("دسته بندی وجود ندارد"))
+        messages.success(request, ("چنین دسته‌بندی‌ای یافت نشد"))
     return redirect("home")
