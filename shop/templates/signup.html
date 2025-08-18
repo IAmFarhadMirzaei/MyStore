@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Header-->
+
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">ثبت نام کنید</h1>
-            <p class="lead fw-normal text-white-50 mb-0">همین امروز اکانت بسازید</p>
+            <h1 class="display-4 fw-bolder">ثبت‌نام</h1>
+            <p class="lead fw-normal text-white-50 mb-0">همین حالا حساب کاربری خود را بسازید &#128515</p>
         </div>
     </div>
 </header>
@@ -20,7 +20,7 @@
                   {% csrf_token %}
                       {{ form.as_p }}
                       <br><br>
-                <button type="submit" class="btn btn-secondary">ثبت نام</button>
+                <button type="submit" class="btn btn-secondary">ثبت‌نام</button>
                 </form>
             </div>
         </center>
