@@ -3,12 +3,12 @@
 {% load static %}
 
 {% block content %}
-<!-- Header-->
+
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">صورتحساب</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">لطفا سفارشتون رو چک کنید</p>
+                    <p class="lead fw-normal text-white-50 mb-0">سفارش خودتون رو بررسی کنید &#129488</p>
                 </div>
             </div>
         </header>
@@ -20,7 +20,7 @@
             <div class="col-8">
                 <div class="card">
                 <div class="card-header">
-                    خلاصه سفارشات شما:
+                    خلاصه‌ی سفارشات شما:
                 </div>
                 <div class="card-body">
                     {% for product in cart_products %}
@@ -28,22 +28,22 @@
                         <small>
                             قیمت:
                             {% if product.is_sale %}
-                                {{ product.sale_price }}
+                                {{ product.sale_price }} تومان
                             {% else %}
-                                {{ product.price }}
+                                {{ product.price }} تومان
                             {% endif %}
                         </small> <br>
                         <small>
                         تعداد:
                         {% for key,value in quantities.items %}
                           {% if key == product.id|slugify %}
-                            {{ value }}
+                            {{ value }} عدد
                           {% endif %}
                         {% endfor %}
                         </small> <br>
                         <hr>
                     {% endfor %}
-                    <strong> مجموع کل سفارشات {{ total }}</strong>
+                    <strong>مجموع کل سفارشات: {{ total }} تومان</strong>
                     <br><br>
                     <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">ویرایش سفارش</a>
                 </div>
@@ -51,7 +51,7 @@
                 <br>
                 <div class="card">
                 <div class="card-header">
-                    مشخصات ارسال:
+                    مشخصات مربوط به ارسال:
                 </div>
                 <div class="card-body">
                     <form action="{% url 'confirm_order' %}" method="POST">
