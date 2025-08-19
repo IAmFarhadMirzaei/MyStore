@@ -122,7 +122,7 @@ def signup_user(request):
             form.save()
             username = form.cleaned_data['username']
             password1 = form.cleaned_data['password1']
-            user = authenticate(request, username=username, password1=password1)
+            user = authenticate(request, username=username, password=password1)
             login(request, user)
             messages.success(request, ("حساب کاربری شما ساخته شد"))
             return redirect("update_info")
