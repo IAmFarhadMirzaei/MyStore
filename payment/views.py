@@ -35,7 +35,7 @@ def confirm_order(request):
 
         return render(request, 'payment/confirm_order.html', {'cart_products':cart_products, 'quantities':quantities, 'total':total, 'shipping_info':user_shipping})
     else:
-        messages.success(request, 'دسترسی به این صفحه امکان پذیر نمیباشد')
+        messages.success(request, 'دسترسی به این صفحه امکان‌پذیر نمی‌باشد')
         return redirect('home')
     
 def process_order(request):
@@ -132,5 +132,5 @@ def process_order(request):
             return redirect('home')
         
     else:
-        messages.success(request, 'دسترسی به این صفحه امکان پذیر نمیباشد')
+        messages.success(request, 'دسترسی به این صفحه امکان‌پذیر نمی‌باشد')
         return redirect('home')
