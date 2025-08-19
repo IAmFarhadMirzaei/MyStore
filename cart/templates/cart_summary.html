@@ -3,12 +3,12 @@
 {% load static %}
 
 {% block content %}
-<!-- Header-->
+
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">سبد خرید شما</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">اینجا هر چی بخوای اضافه میشه</p>
+                    <p class="lead fw-normal text-white-50 mb-0">محصولات مورد‌نظرت رو به سبد خرید اضافه کن &#129321</p>
                 </div>
             </div>
         </header>
@@ -52,7 +52,7 @@
                     <button type="button" data-index={{product.id}}
                     class="btn btn-danger delete-product">حذف</button>
                     
-                    <a href="{% url 'home' %}" class="btn btn-secondary">بازگشت به صفحه اصلی</a>
+                    <a href="{% url 'home' %}" class="btn btn-secondary">بازگشت به صفحه‌ی اصلی</a>
 
                 </div>
             </div>
@@ -60,9 +60,9 @@
     </div>
 </div>
 {% endfor %}
-<h3>مجموع کل سفارشات: {{total}} تومان</h3>
+<center><h3>مجموع کل سفارشات {{total}} تومان</h3></center>
 <br>
-<a href="{% url 'checkout' %}" class="btn btn-success">صورتحساب</a>
+<center><a href="{% url 'checkout' %}" class="btn btn-success">صورتحساب</a></center>
 {% else %}
 <br><br>
 <center><h3 class="container">سبد خرید شما خالیست &#128531</h3></center>
