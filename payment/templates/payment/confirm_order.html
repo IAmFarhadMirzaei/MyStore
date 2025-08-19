@@ -3,12 +3,12 @@
 {% load static %}
 
 {% block content %}
-<!-- Header-->
+
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">تایید نهایی</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">چک نهایی رو انجام بدین</p>
+                    <h1 class="display-4 fw-bolder">تائید نهایی</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">بررسی کنید و چک نهایی رو انجام بدین &#128176</p>
                 </div>
             </div>
         </header>
@@ -20,7 +20,7 @@
             <div class="col-8">
                 <div class="card">
                 <div class="card-header">
-                    خلاصه سفارشات شما:
+                    خلاصه‌ی سفارشات شما:
                 </div>
                 <div class="card-body">
                     {% for product in cart_products %}
@@ -28,37 +28,37 @@
                         <small>
                             قیمت:
                             {% if product.is_sale %}
-                                {{ product.sale_price }}
+                                {{ product.sale_price }} تومان
                             {% else %}
-                                {{ product.price }}
+                                {{ product.price }} تومان
                             {% endif %}
                         </small> <br>
                         <small>
                         تعداد:
                         {% for key,value in quantities.items %}
                           {% if key == product.id|slugify %}
-                            {{ value }}
+                            {{ value }} عدد
                           {% endif %}
                         {% endfor %}
                         </small> <br>
                         <hr>
                     {% endfor %}
-                    <strong> مجموع کل سفارشات {{ total }}</strong>
+                    <strong>مجموع کل سفارشات: {{ total }} تومان</strong>
                     <br><br>
                 </div>
                 </div>
                 <br>
                 <div class="card">
                 <div class="card-header">
-                    مشخصات ارسال:
+                    مشخصات مربوط به ارسال:
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{% url 'process_order' %}">
                         {% csrf_token %}
                     نام و نام خانوادگی: {{ shipping_info.shipping_full_name }} <br>
                     ایمیل: {{ shipping_info.shipping_email }} <br>
-                    آدرس 1: {{ shipping_info.shipping_address1 }} <br>
-                    آدرس 2: {{ shipping_info.shipping_address2 }} <br>
+                    آدرس اول: {{ shipping_info.shipping_address1 }} <br>
+                    آدرس دوم: {{ shipping_info.shipping_address2 }} <br>
                     شهر: {{ shipping_info.shipping_city }} <br>
                     منطقه: {{ shipping_info.shipping_state }} <br>
                     کد پستی: {{ shipping_info.shipping_zipcode }} <br>
